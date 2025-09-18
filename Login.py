@@ -1,6 +1,7 @@
 from customtkinter import *
 from PIL import Image
 from tkinter import messagebox
+import ems
 
 def login():
     if usernameEntry.get() == "" or passwordEntry.get() == "":
@@ -8,13 +9,14 @@ def login():
     elif usernameEntry.get() == "Vishnu" and passwordEntry.get() == "1234":
         messagebox.showinfo("Success","Login Successful")
         root.destroy()
-        import ems
+        ems.run_ems()
     else:
         messagebox.showerror("Error","Wrong credentials")
 
 root = CTk()
 root.geometry("930x478")
 root.resizable(0,0)
+
 root.title("Login Page")
 root.configure(fg_color="#161C30")
 
