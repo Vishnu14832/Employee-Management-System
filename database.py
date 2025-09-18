@@ -41,4 +41,22 @@ def fetch_employee():
     result = mycursor.fetchall()
     return result
 
+def update(id, new_name, new_contact, new_role, new_gender, new_salary):
+    mycursor.execute(
+        'UPDATE data SET Name=%s, Contact=%s, Role=%s, Gender=%s, Salary=%s WHERE Id=%s',
+        (new_name, new_contact, new_role, new_gender, new_salary, id)
+    )
+    conn.commit()
 
+def delete(id):
+    mycursor.execute('DELETE FROM data WHERE Id = %s',id)
+    conn.commit()
+
+def search(option,value):
+    mycursor.execute(f'SELECT * FROM data WHERE {option}=%s',value)
+    result = mycursor.fetchall()
+    return result
+
+def delete_allRecords():
+    mycursor.execute('TRUNCATE TABLE data')
+    conn.commit()
